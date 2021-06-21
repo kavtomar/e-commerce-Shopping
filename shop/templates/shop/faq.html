@@ -1,0 +1,57 @@
+{% extends "shop/basic.html" %}
+{% block title %} Privacy Policy {% endblock %}
+{% block body %}
+<div class="container mx-2 my-4">
+<h2><p>FAQ's ( Frequently Asked Questions )</p></h2>
+    <h3 class="mt-2"><p>Q: Will I be informed once my order is placed?</p></h3>
+    <h4><p>Ans: Once your order is placed, you will get a success message. You can also TRACK ORDER by using your email and order id.</p></h4>
+    <h3 class="mt-2"><p>Q: How do I check the status of my order?</p></h3>
+    <h4><p>Ans: Click the trackor button in the navigation bar, and then by using order id and email you can track your order.</p></h4>
+    <h3 class="mt-2"><p>Q: What is COD(Cash on Delivery)? Are there any additional charges for COD orders?</p></h3>
+    <h4><p>Ans: COD is cash on delivery.It doesn’t matter if you don’t have a Credit/Debit card or online shopping is not your forte. Shopping Cart offers you the option of paying for the purchase at your doorstep. Just place your order and make cash payment to our COD partner upon the delivery of your item. Not all deals/products have COD option.</p></h4>
+    <h3 class="mt-2"><p>Q: Do I have to register to shop at Shoppingcart?</p></h3>
+    <h4><p>Ans: Yes you have to register before buying any product.</p></h4>
+    <h3 class="mt-2"><p>Q: Are there any registration charges for creating an account on Shopping Cart?</p></h3>
+    <h4><p>Ans: No, there are no registration charges applicable for creating an account with us. It is absolutely free of cost.</p></h4>
+    <h3 class="mt-2"><p>Q: How to return items?</p></h3>
+    <h4><p>Ans: Sorry, currently no return policy is available.</p></h4>
+    <h5 class="my-4" >Do you have another query/complaint? Please <a href="/shop/contact">contact us</a> here.</h5>
+</div>
+{% endblock body %}
+{% block js %}
+<script>
+    if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+
+var popover = new bootstrap.Popover(document.querySelector('#popcart'),{
+container: 'body'
+})
+
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+
+$('#popcart').show();
+document.getElementById('popcart').setAttribute('data-bs-content','<h5>Here is your Cart</h5>');
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'shop/basic.html' %}
+{% block title %}  {% endblock  %}
+{% block css %}
+.badge {
+    display: inline-block;
+    padding: .35em .65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    color: black;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="col my-4">
+    <h2> Track Your Orders</h2>
+         <h3> Enter Address & Other Details:</h3>
+         <div class="row g-3">
+        <form  method="post" action="#" id="trackerForm">
+            {% csrf_token %}
+
+            <div class="col-md-6">
+                <label for="orderId" class="form-label">Order Id</label>
+    <input type="text" class="form-control" id="orderId" name="orderId">
+  </div>
+  <div class="col-md-6 my-4">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email">
+  </div>
+
+  <div class="col-12 my-4">
+    <button type="submit" class="btn btn-primary">Track Order</button>
+  </div>
+</form></div>
+        <div class="col-my-4">
+            <h3>Your Order Status</h3>
+        <ul class="list-group " id="items">
+           Enter your order Id and Email and click Track Order to find details about your order!
+        </ul>
+        <h3 class="my-4">Your Order Details</h3>
+        <div class="my-4">
+            <ul class="list-group" id="citems">
+            </ul>
+        </div></div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+
+
+
+<script>
+
+$('#trackerForm').submit(function(event) {
+    $('#items').empty();
+    var formData = {
+        'orderId': $('input[name=orderId]').val(),
+        'email': $('input[name=email]').val(),
+        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+    };
+    $.ajax({
+            type: 'POST',
+            url: '/shop/tracker/',
+            data: formData,
+            encode: true
+        })
+        .done(function(data) {
+            $('#citems').empty();
+            console.log(data)
+            data = JSON.parse(data);
+             console.log(data)
+
+            if (data['status'] == 'success') {
+                updates = data['updates'];
+                for (i = 0; i < updates.length; i++) {
+                    let text = updates[i]['text'];
+                    let time = updates[i]['time'];
+                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
+                    ${text}
+                    <span class="badge badge-primary badge-pill">${time}</span>
+                </li>`
+                    $('#items').append(mystr);
+                }
+
+                // Fill in the order details
+
+              cart = JSON.parse(data.itemJson);
+
+                for (item in cart) {
+                    let name = cart[item][1];
+                    let qty = cart[item][0];
+                    mystr = `<li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
+                            ${name}
+
+    <span class="badge bg-light rounded-pill fw-bold">Qty : ${qty}</span>
+                </li>`
+                    $('#citems').append(mystr);
+                }
+            } else {
+                mystr = `<li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
+                    Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id and email</li>`
+                $('#items').append(mystr);
+                $('#citems').append(mystr);
+            }
+        });
+    event.preventDefault();
+});
+
+
+
+
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+var popover = new bootstrap.Popover(document.querySelector('#popcart'),{
+container: 'body'
+})
+
+
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+$('#popcart').show();
+document.getElementById('popcart').setAttribute('data-bs-content','<h5>Here is your cart items.</h5>');
+
+</script>
+{% endblock %}

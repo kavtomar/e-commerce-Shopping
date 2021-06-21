@@ -1,0 +1,430 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} Home Page {% endblock  %}
+
+ {% block css %}
+.col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
+
+.col-md-3 img{
+max-width: 180px;
+height: 200px;
+}
+body .carousel-indicators{
+bottom: 0;
+}
+body .no-padding{
+padding-left: 0,
+padding-right: 0;
+}
+h5{
+text-align: center;
+}
+body .bg-dark{
+background-height:500px;
+background-position:center;
+background-repeat: no-repeat;
+background-size:cover;
+}
+ .col-md-12 img{
+max-width: auto ;
+height: 567px ;
+}
+{% endblock %}
+{% block body %}
+  {% load static %}
+
+<div class="container-fluid mx-4 my-2">
+ <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" >
+          <div class="bg-dark" style="background-image: url('{% static 'shop/shopping2.jpg' %}');">
+        <div class="container" >
+            <!-- Hero Section -->
+            <div class="row align-items-center g-0">
+                <div class="col-xl-5 col-lg-6 col-md-12">
+                    <div class="py-3 py-lg-0  text-dark">
+                         <h1>Sale on clothings!</h1>
+                        <p><h4>Grab it now!</h4></p>
+                       <p><a class="btn btn-lg btn-light" href="/shop/fashion/">Click here</a></p>
+                    </div>
+                </div>
+                <div class=" col-xl-7 col-lg-6 col-md-12 text-lg-end text-center">
+                    <img src="{% static 'shop/shopping4.gif' %}" alt="" class="img-fluid">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+      </div>
+      <div class="carousel-item">
+<div class="bg-dark" style="background-image: url('{% static 'shop/ee.jpg' %}');  " >
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="row align-items-center g-0">
+                <div class="col-xl-7 col-lg-6 col-md-12">
+                    <div class="py-5 py-lg-0 carousel-caption text-white ">
+<h1 >Deal on Electronics</h1>
+            <p>Grab it now!</p>
+                       <p><a class="btn btn-lg btn-light" href="/shop/electronics/">Click here</a></p>
+                    </div>
+                </div>
+                <div class=" col-xl-7 col-lg-6 col-md-12 text-lg-end text-center">
+
+                    <img src="{% static 'shop/watch4.jpg' %}" alt="" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+      </div>
+      <div class="carousel-item">
+          <div class="bg-dark" style="background-image: url('{% static 'shop/shoes2.gif' %}')">
+        <div class="container">
+
+            <div class="row align-items-center g-0">
+                <div class="col-xl-5 col-lg-6 col-md-12">
+                    <div class="py-5 py-lg-0  text-dark">
+                         <h1>Deal on Footwears</h1>
+            <p>Grab it now!</p>
+                       <p><a class="btn btn-lg btn-light" href="/shop/footwears/">Click here</a></p>
+                    </div>
+                </div>
+                <div class=" col-xl-7 col-lg-6 col-md-12  ">
+                    <img src="{% static 'shop/shoes2.gif' %}"  alt="" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+     </div>
+
+<div class="container-fluid mx-2">
+<div class="row row-cols-1 row-cols-md-3 g-4  my-4 ">
+    <div class="col">
+    <div class="card h-100">
+        <img src="{% static 'shop/footwears.jpg' %}" class="card-img-top" width="500px" height="333px" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Footwears</h5>
+          <a class="nav-link active" href="/shop/footwears">See More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="{% static 'shop/fashion3.jpg' %}" class="card-img-top " width="500px" height="333px"  alt="...">
+        <div class="card-body">
+        <h5 class="card-title">Fashion Wear</h5>
+            <a class="nav-link active" href="/shop/fashion">View All</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="{% static 'shop/watch.jpg' %}" class="card-img-top" width="500px" height="333px" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">Watches for everyone</h5>
+      <a class="nav-link active" href='/shop/watches'>View All</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div class="container-fluid my-4 py-4">
+    <div id="myCarousel2" class="carousel  slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel2" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+      <button type="button" data-bs-target="#myCarousel2" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+      <button type="button" data-bs-target="#myCarousel2" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+    </div>
+        <div class="container-fluid ">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+<div class="card-group ">
+  <div class="card">
+    <img src="{% static 'shop/t-shirt.jpg' %}" class="card-img-top" width="500px" height="300px"  alt="...">
+  </div>
+    <div class="card">
+    <img src="{% static 'shop/top.jpg' %}" class="card-img-top" width="500px" height="300px"  alt="...">
+  </div>
+  <div class="card">
+    <img src="{% static 'shop/sweater.jpg' %}" class="card-img-top " width="500px" height="300px" alt="...">
+  </div><div class="card">
+    <img src="{% static 'shop/sweater2.jpg' %}" class="card-img-top " width="500px" height="300px" alt="...">
+  </div>
+  <div class="card">
+    <img src="{% static 'shop/t-shirt2.jpg' %}" class="card-img-top " width="500px" height="300px" alt="...">
+  </div>
+  <div class="card">
+    <img src="{% static 'shop/gown.jpg' %}" class="card-img-top " width="500px" height="300px" alt="...">
+  </div>
+  <div class="card">
+    <img src="{% static 'shop/middie.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+</div>
+                </div>
+
+            <div class="carousel-item">
+<div class="card-group">
+  <div class="card">
+    <img src="{% static 'shop/lamp.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div><div class="card">
+    <img src="{% static 'shop/buddha.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div><div class="card">
+    <img src="{% static 'shop/chair.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+  <div class="card">
+    <img src="{% static 'shop/boot2.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+    <div class="card">
+    <img src="{% static 'shop/heel2.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+    <div class="card">
+    <img src="{% static 'shop/heel.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+  <div class="card">
+    <img src="{% static 'shop/boot.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+</div>
+                </div>
+
+
+    <div class="carousel-item">
+<div class="card-group ">
+  <div class="card">
+    <img src="{% static 'shop/lapie1.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div><div class="card">
+    <img src="{% static 'shop/laptop.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div><div class="card">
+    <img src="{% static 'shop/lapie2.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+  <div class="card">
+    <img src="{% static 'shop/watch4.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+    <div class="card">
+    <img src="{% static 'shop/watch3.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+    <div class="card ">
+    <img src="{% static 'shop/earphones.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+  <div class="card ">
+    <img src="{% static 'shop/iphone.jpg' %}" class="card-img-top" width="500px" height="300px" alt="...">
+  </div>
+</div>
+ </div>
+  </div>
+            </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel2" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel2" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>
+</div>
+
+
+
+
+<div class="container-fluid">
+    <!--Slideshow starts here -->
+    {% for product, range, nSlides in allProds %}
+    <h5 class="my-4"  >Flash Sale On {{product.0.category|title}} - Recommended Items</h5>
+    <div class="row">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-bs-target="#demo{{forloop.counter}}" data-bs-slide-to="0" class="active"></li>
+                {% for i in range %}
+                <li data-bs-target="#demo{{forloop.parentloop.counter}}" data-bs-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ul>
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    {% for i in product %}
+                    <div class="col-xs-3 col-sm-3 col-md-3 my-2">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                            <div class="card-body h-100">
+                                <h5 class="card-title "  id="namepr{{i.id}}"> {{i.product_name|slice:"0:20"}}...</h5>
+                                <h5 class="card-title" >Price: <span id="pricepr{{i.id}}">{{i.price}}</span></h5>
+
+                                <p class="card-text ">{{i.desc|slice:"0:53"}}...</p>
+                                <span id="divpr{{i.id}}" class="divpr">
+                                    <button id="pr{{i.id}}" class="btn btn-outline-success cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-outline-success cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+        <!-- left and right controls for the slide -->
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo{{forloop.counter}}" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo{{forloop.counter}}" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock body %}
+
+{% block js %}
+<script>
+
+// Find out the cart items from local Storage
+
+    if(localStorage.getItem('cart') == null)
+    {
+    var cart = {};
+    }
+else{
+cart = JSON.parse(localStorage.getItem('cart'));
+updateCart(cart);
+}
+
+// If the add to cart butoon is clicked add/increment the item
+
+$('.divpr').on('click', 'button.cart', function()
+{
+var idstr = this.id.toString();
+if (cart[idstr] != undefined){
+qty = cart[idstr][0] + 1;
+}
+else {
+qty =  1;
+name = document.getElementById('name' + idstr).innerHTML;
+price = document.getElementById('price' + idstr).innerHTML;
+cart[idstr] = [qty, name,parseInt(price)];
+console.log(qty)
+}
+updateCart(cart);
+});
+
+// Add popover to cart
+
+var popover = new bootstrap.Popover(document.querySelector('#popcart'),{
+container: 'body'
+})
+
+updatePopover(cart);
+
+function updatePopover(cart){
+var popStr = "";
+popStr = popStr + "<h5> Cart for your items </h5><div class='mx-2 my-2'>";
+var i = 1;
+for (var item in cart){
+    popStr = popStr + "<b>" + i + "</b>. ";
+    popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item][0] + '<br>';
+    i = i+1;
+  }
+  popStr = popStr + "</div> <a  href='/shop/checkout'<button class = 'btn btn-primary'  id ='checkout'>Checkout</button></a>  <button  class = 'btn btn-primary text-nowrap' onclick='clearCart()' id ='clearCart'  >Clear Cart</button>     "
+    console.log(popStr);
+   document.getElementById('popcart').setAttribute('data-bs-content', popStr);
+  $('#popcart').show();
+
+  { //Allowing button and adding HTML to popover
+
+  var myDefaultAllowList = bootstrap.Tooltip.Default.allowList
+  myDefaultAllowList.button = ['onclick']
+ };
+}
+
+
+function clearCart(){
+     cart = JSON.parse(localStorage.getItem('cart'));
+     for (var item in cart){
+        document.getElementById('div' + item).innerHtML = '<button id="'+ item +'" class="btn btn-outline-success cart">Add To Cart</button'
+     }
+     localStorage.clear();
+     cart = {};
+     updateCart(cart);
+
+}
+
+function updateCart(cart){
+var sum = 0;
+for (var item in cart){
+   sum = sum + cart[item][0];
+   document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = sum;
+    updatePopover(cart);
+    { //Allowing button and adding HTML to popover
+
+  var myDefaultAllowList = bootstrap.Tooltip.Default.allowList
+  myDefaultAllowList.button = ['onclick']
+ };
+
+}
+
+
+// If plus or minus button is clicked, change the cart as well as the displayed value
+
+$('.divpr').on("click", "button.minus", function(){
+a = this.id.slice(7, );
+console.log(a);
+cart['pr' + a][0] = cart['pr' + a][0] - 1;
+cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+if (cart['pr' + a][0] == 0){
+     document.getElementById('divpr' + a).innerHTML = '<button id="pr'+a+'" class="btn btn-outline-success cart">Add to Cart</button>';
+     delete cart['pr'+a];
+     }
+else{
+      document.getElementById('valpr'+a).innerHTML = cart['pr' + a][0];
+      }
+updateCart(cart);
+});
+
+$('.divpr').on("click", "button.plus", function(){
+a = this.id.slice(6, );
+console.log(a);
+cart['pr' + a][0] = cart['pr' + a][0] + 1;
+document.getElementById('valpr'+a).innerHTML = cart['pr' + a][0];
+updateCart(cart);
+});
+
+</script>
+{% endblock %}

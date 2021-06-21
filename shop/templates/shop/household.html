@@ -1,0 +1,119 @@
+{% extends 'shop/basic.html' %}
+{% block title %} {{product.product_name}} {% endblock  %}
+{% block css %}
+.col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
+
+.col-md-3 img{
+max-width: 180px;
+height: 200px;
+
+}
+body .carousel-indicators{
+bottom: 0;
+}
+body .no-padding{
+padding-left: 0,
+padding-right: 0;
+}
+h5{
+text-align: center;
+}
+{% endblock %}
+{% block body %}
+{% load static %}
+<div class="container-fluid ">
+
+    <!--Slideshow starts here -->
+    {% for product, range, nSlides in allProds %}
+
+    <h5 class="my-4 fw-bold"  >Flash Sale On {{product.0.subcategory|title}}</h5>
+    <div class="row my-2">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-2" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-bs-target="#demo{{forloop.counter}}" data-bs-slide-to="0" class="active"></li>
+                {% for i in range %}
+                <li data-bs-target="#demo{{forloop.parentloop.counter}}" data-bs-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ul>
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    {% for i in product %}
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card align-items-center" style="width: 18rem;">
+                            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                            <div class="card-body h-100">
+                                <h5 class="card-title "  id="namepr{{i.id}}">{{i.product_name|slice:"0:20"}}...</h5>
+                                <h5 class="card-title" >Price: <span id="pricepr{{i.id}}">{{i.price}}</span></h5>
+
+                                <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
+                                <span id="divpr{{i.id}}" class="divpr">
+                                    <button id="pr{{i.id}}" class="btn btn-outline-success cart">Add To Cart</button>
+                                </span>
+                                <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-outline-success cart">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+        <!-- left and right controls for the slide -->
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#demo{{forloop.counter}}" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo{{forloop.counter}}" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    </div></div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+{%block js %}
+<script>
+    if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+
+var popover = new bootstrap.Popover(document.querySelector('#popcart'),{
+container: 'body'
+})
+
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+
+$('#popcart').show();
+document.getElementById('popcart').setAttribute('data-bs-content','<h5>Here is your Cart</h5>');
+
+
+</script>
+{% endblock %}

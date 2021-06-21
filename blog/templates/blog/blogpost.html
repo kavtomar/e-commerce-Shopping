@@ -1,0 +1,62 @@
+{% extends 'blog/basic.html' %}
+   {% block title %} Shopping Cart Blog {% endblock %}
+  {% block body %}<div class="container my-4">
+
+<div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+          {{post.title}}<div class="fb-like mt-2" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-layout="standard" data-action="like" data-size="large" data-shoe-faces="true" data-share="true"></div>
+        </h3>
+      <img class="my-4 img-responsive" src="/media/{{post.thumbnail}}" class="bd-placeholder-img " width="850" height="500">
+        <h3 class="blog-post-title my-2">{{post.head0}}</h3>
+            <h4 class="my-2  border-bottom"><p>{{post.chead0}}</p></h4>
+
+
+      <img class="my-4 img-responsive" src="/media/{{post.thumbnail1}}" width="500" height="500">  <h2>1. {{post.head1}}</h2>
+        <h3 class="my-2 border-bottom"><p> {{post.chead1}}</p></h3>
+
+
+<img class="my-4 img-responsive" src="/media/{{post.thumbnail2}}" width="500" height="500">
+        <h2>2. {{post.head2}}</h2>
+        <h3 class="my-2 border-bottom"><p>{{post.chead2}}</p></h3>
+<img class=" img-responsive my-4" src="/media/{{post.thumbnail3}}"  width="500" height="500">
+
+
+          <h2>3. {{post.head3}}</h2>   <h3 class="my-2 border-bottom"><p>{{post.chead3}}</p></h3>
+
+      <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-numposts="5"></div>
+
+
+
+
+
+
+    </div>
+
+    <div class="col-md-4">
+      <div class="position-sticky" style="top: 2rem;">
+        <div class="p-4 mb-3 bg-light rounded my-4">
+          <h4 class="fst-italic">About</h4>
+            <p class="mb-0"><b>Shopping Cart</b> is an Indian <em>e-commerce</em> company based in Ghaziabad, India.
+              It was founded by Kavish Tomar, Simran Singh and Sanjana Tomer.</p> <p>The company initially focused on fashion wear sales, before expanding into other product categories such as consumer electronics,  and lifestyle products.</p>
+
+
+          <div class="fb-share-button" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fblog%2Fblogpost%2F3&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+ </div>
+
+        <div class="p-4">
+          <h4 class="fst-italic">Contact Us here:</h4>
+          <ol class="list-unstyled">
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

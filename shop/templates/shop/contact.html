@@ -1,0 +1,79 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}
+Contact Us
+{% endblock title %}
+
+
+{% block body %}
+<div class ="container my-4">
+<h1 class="text-center"> Contact Us </h1>
+
+<form method="post" action="/shop/contact/">
+
+{% csrf_token %}
+
+  <div class="form-group my-4">
+    <label for="name"><h3>Name</h3></label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+  </div>
+
+  <div class="form-group my-4">
+    <label for="email"><h3>Email address</h3></label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+  </div>
+
+  <div class="form-group my-4">
+    <label for="phone"><h3>Contact No.</h3></label>
+    <input type="tel" class="form-control" id="phone" name="phone" placeholder="1223456789">
+  </div>
+
+  <div class="form-group my-4">
+    <label for="review"><h3>Review</h3></label>
+    <textarea class="form-control" id="review" name="review" rows="3"></textarea>
+  </div>
+  <button class="btn btn-success"  type="submit">Submit</button>
+</form>
+</div>
+
+{% endblock body %}
+
+{%block js %}
+<script>
+
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+
+var popover = new bootstrap.Popover(document.querySelector('#popcart'),{
+container: 'body'
+})
+
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+
+$('#popcart').show();
+document.getElementById('popcart').setAttribute('data-bs-content','<h5>Here is your Cart</h5>');
+
+
+
+</script>
+{% endblock %}

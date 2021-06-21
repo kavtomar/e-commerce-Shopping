@@ -1,0 +1,31 @@
+{% extends "shop/basic.html" %}
+{% block title %} Login  {% endblock %}
+{% block body %}
+
+<!--{% load crispy_forms_tags %}-->
+
+<!--Login-->
+<div class="container py-5">
+  <div class="row row-col  border border-dark"><h1 class="text-center">Login</h1>
+  
+  <form method="POST">
+    {% csrf_token %}
+
+    <div id="div_id_username" class="form-group d-grid col-4 mx-auto my-4"> <label for="id_username" class=" requiredField fw-bold">
+                Username<span class="asteriskField">*</span> </label>
+      <div class="my-2">
+      <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150"
+             class="textinput textInput form-control" required="" id="id_username">
+    </div> </div>
+     <div id="div_id_password" class="form-group d-grid col-4 mx-auto my-4"> <label for="id_password" class=" requiredField fw-bold">
+    Password<span class="asteriskField">*</span>  </label>
+    <div class="my-2">
+      <input type="password" name="password" autocomplete="current-password"
+             class="textinput textInput form-control" required="" id="id_password"> </div>
+             <div class='d-grid col-2 mx-auto my-4'>
+    <button class="btn btn-primary " type="submit">Login</button></div>
+     </div></form>
+  <p class="text-center fw-bold">Don't have an account? <a href="/shop/register/">Create an account</a>.</p>
+  </div></div>
+
+{% endblock %}

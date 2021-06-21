@@ -1,0 +1,82 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %} About Us{% endblock %}
+{% block body %}
+
+  <div class="container my-4">
+  <div class=" jumbotron">
+        <h2 class="display-5 fw-bold"><b>Shopping Cart</b></h2>
+      <p class="col-md-12 fs-4">Welcome to Shopping Cart, one source for all things [ clothings, footwears, electronics and household neccessities ]. Shopping Cart is an Indian e-commerce company based in Ghaziabad, India.
+        It was founded by Kavish Tomar, Simran Singh and Sanjana Tomer. The company initially focused on fashion wear sales, before expanding into other product categories such as consumer electronics,  and lifestyle products.
+<p class="col-md-12 fs-4"> We are dedicated to giving you very best of the products, with a focus on dependability, customer service and uniqueness.
+    We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.</p>
+          <p><a class="btn btn-primary btn-lg " href="/blog/" role="button">Learn more »</a></p>
+    </div>
+  </div>
+
+  <div class="container my-4">
+
+    <div class="row h-100 p-5 bg-light border rounded-3">
+      <div class="col-md-4 ">
+        <h2>Privacy Police</h2>
+        <p><strong> Please read our privacy policy before registering into our website.</strong> </p>
+        <p><a class="btn btn-info" href="/shop/privacy" role="button">View details »</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Help Center</h2>
+        <p><strong>If you have any query/complaint, then here is our help center.</strong> </p>
+        <p><a class="btn btn-info" href="/shop/faq" role="button">View details »</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>FAQs</h2>
+
+        <p><strong>Here are some frequently asked questions by our customers.</strong></p>
+        <p><a class="btn btn-info" href="/shop/faq" role="button">View details »</a></p>
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+{% endblock %}
+{%block js %}
+<script>
+
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+
+var popover = new bootstrap.Popover(document.querySelector('#popcart'),{
+container: 'body'
+})
+
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+
+$('#popcart').show();
+document.getElementById('popcart').setAttribute('data-bs-content','<h5>Here is your Cart</h5>');
+
+
+
+</script>
+{% endblock %}

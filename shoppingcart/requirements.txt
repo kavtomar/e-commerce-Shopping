@@ -1,0 +1,5 @@
+Python==3.9.2
+django==3.2.3
+pycryptodome==3.10.1
+Pillow==8.2.0
+django-crispy-forms==1.11.2
