@@ -3,8 +3,7 @@
 You can use the [editor on GitHub](https://github.com/kavtomar/e-commerce-Shopping/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown fil
-
-[https://github.com/kavtomar/e-commerce-Shopping/blob/3e6589836eb92cf73a9405d0b799555ce4ad6301/shoppingcart/templates/index.html](url) and ![Image](src)
+[https://kavtomar.github.io/e-commerce-Shopping/](/shop/) and ![Image](src)
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
